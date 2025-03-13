@@ -10,12 +10,16 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace LibreriaDeControles
 {
+
+    [DefaultProperty("Tipo")]
+    [DefaultEvent("CambiaTexto")]
     public partial class ValidateTextBox : UserControl
     {
         public enum eTipo { Numerico, Textual }
 
         private eTipo tipo = 0;
-        [Category("Examen")]
+        [Category("Properties")]
+        [Description("Establece u obtiene la propiedad tipo")]
         public eTipo Tipo
         {
             set
@@ -35,12 +39,16 @@ namespace LibreriaDeControles
             txt.Width = this.Width - 20;
         }
 
+        [Category("Properties")]
+        [Description("Da acceso a la propiedad Text del textbox del componenete")]
         public string Texto
         {
             set { txt.Text = value; }
             get { return txt.Text; }
         }
 
+        [Category("Properties")]
+        [Description("Da acceso a la propiedad Multiline del textbox del componenete")]
         public bool Multilinea
         {
             set { txt.Multiline = value; }
@@ -76,6 +84,8 @@ namespace LibreriaDeControles
             return Color.Green;
         }
 
+        [Category("Events")]
+        [Description("Se lanza al cambiar el texto del componenete")]
         public event EventHandler CambiaTexto;
 
         protected virtual void OnCambiaTexto(EventArgs e)
